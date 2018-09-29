@@ -1,0 +1,17 @@
+So we had the following difficulties:
+   We initially were going to code for the extra credit and have it work on any cxv file.  We planned to use three arrays for holding all the data. 
+ All the arrays would be built after the reading in the first line.  While reading in the first line the plan was to count the delimeters in the line to tell us how many headers there would be plus one to account for the last header. 
+ Then we were planning to use the linux command wc -l to count the number of lines in the .csv file and that would tell us how many records there would be minus 1. 
+ The three arrays then would have been the header array holding each header name, a record array the same size as the header array with each spot in the array the value of the header for that record, and the third array would hold all the records. 
+ The merge sort would then sort the array of records using the record array with the position of the header to sort the data on. 
+ We had to abandon the coding for the general case when 1 Jared realized Strings don't exist in c they are only char arrays and 2 when that realization was made
+ and the coding around it was discovered Jared didn't have enough time to help Sohan complete the coding for the general case as Jared had other projects due in the same time.
+
+For the non general case we decided to build a record structure to hold all the different header values.  We then created an array to hold all of records together.
+We then wrote a generalized merge sort that left all the comparisons to a helper method called compare.  Compare uses basic binary operators for the numerics or if
+a flag is activated meaning we are sorting on a character string we are using strcmp.  The compare method either way returns a postive number if the left value is
+greater than the right value, a negative value if the right value is greater than the left value and 0 if both values are equal.
+
+Problems we encountered:
+We had a memory leak for a while after trying to read in the given test csv file where a self made smaller csv file wasn't having a any memory leaks.
+Another problem encountered was trying to figure out how t merge sort of different data types without having to write more than one merge sort method.
